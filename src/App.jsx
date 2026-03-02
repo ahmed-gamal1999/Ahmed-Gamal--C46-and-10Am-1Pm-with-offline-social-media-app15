@@ -15,6 +15,8 @@ import ChangePassword from "./components/ChangePassword/ChangePassword";
 import Postdetails from "../src/components/postdetails/Postdetails";
 import UpdatePostPage from "./components/UpdatePostPage/UpdatePostPage";
 import ChangePhoto from "./components/ChangePhoto/ChangePhoto";
+import Following from "./components/Following/Following";
+import UserProfile from "./components/userProfile/userProfile";
 
 let query = new QueryClient();
 
@@ -53,6 +55,22 @@ const routing = createBrowserRouter([
         element: (
           <Protected>
             <ChangePassword />
+          </Protected>
+        ),
+      },
+      {
+        path: "following",
+        element: (
+          <Protected>
+            <Following />
+          </Protected>
+        ),
+      },
+      {
+        path: "userprofile/:userId",
+        element: (
+          <Protected>
+            <UserProfile />
           </Protected>
         ),
       },

@@ -91,11 +91,17 @@ export default function Home() {
             <div className="flex gap-3 items-center">
               <img
                 src={post.user.photo}
-                className="rounded-full w-12 h-12 object-cover"
+                className="rounded-full cursor-pointer w-12 h-12 object-cover"
                 alt={post.user.name}
+                onClick={() => navigate(`userprofile/${post.user._id}`)}
               />
               <div>
-                <h2 className="font-semibold">{post.user.name}</h2>
+                <h2
+                  onClick={() => navigate(`userprofile/${post.user._id}`)}
+                  className="font-semibold cursor-pointer"
+                >
+                  {post.user.name}
+                </h2>
                 <span className="text-xs text-gray-500">
                   {new Date(post.createdAt).toLocaleString()}
                 </span>

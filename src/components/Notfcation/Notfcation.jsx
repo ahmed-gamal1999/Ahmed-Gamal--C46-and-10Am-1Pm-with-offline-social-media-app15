@@ -19,7 +19,7 @@ export default function Notfcation() {
           },
         );
         if (data.success == true) {
-          console.log(data.data.notifications);
+          // console.log(data.data.notifications);
           setnotfcation(data?.data?.notifications);
         }
       } catch (error) {
@@ -41,7 +41,7 @@ export default function Notfcation() {
           <IoIosNotifications className="text-2xl text-gray-700" />
 
           <span
-            className="absolute -top-1 -right-1 
+            className="absolute -top-0 -right-0
                          bg-red-600 text-white 
                          text-[10px] font-bold 
                          min-w-[18px] h-[18px] 
@@ -66,7 +66,7 @@ export default function Notfcation() {
               return (
                 <div
                   key={notf._id}
-                  className="px-4 py-3 hover:bg-gray-100 
+                  className="px-4 py-3 hover:bg-gray-100  border-b border-b-gray-200
                           cursor-pointer transition"
                 >
                   <p className="text-sm">

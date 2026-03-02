@@ -23,17 +23,18 @@ export default function Navbar() {
             },
           },
         );
+        // console.log(data);
 
         if (data.success == true) {
           // console.log(data.data.user);
-          setuserData(data.data.user);
+          setuserData(data?.data?.user);
         }
       } catch (error) {
-        toast.error("erooooooooooooooooooorrrrrrr");
+        toast.error("erooooooooooooooooooorrrrrrr Navbar");
       }
     }
-    getUserData();
-  }, []);
+    if (Token) getUserData();
+  }, [userData]);
   function signOut() {
     localStorage.removeItem("userToken");
     setToken(null);
@@ -43,29 +44,54 @@ export default function Navbar() {
     <>
       <nav className="bg-neutral-primary w-full border-b border-default">
         <div className="max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <Link to="/" className="flex items-center   rtl:space-x-reverse">
-            <img src={logo} className="h-7 logo" alt="Flowbite Logo" />
-          </Link>
+          <div>
+            <Link to="/" className="flex items-center   rtl:space-x-reverse">
+              <img src={logo} className="h-7 logo" alt="Flowbite Logo" />
+            </Link>
+          </div>
+
+          {Token && (
+            <div className="flex gap-4">
+              <div
+                onClick={() => navigate("/Following")}
+                className="flex flex-col items-center justify-center px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-lg transition"
+              >
+                <h6 className="text-sm font-semibold text-gray-800">
+                  {userData?.followingCount}
+                </h6>
+                <h2 className="text-xs text-gray-700">Following</h2>
+              </div>
+              <div className="flex flex-col items-center justify-center px-4 py-2 cursor-pointer hover:bg-gray-100 rounded-lg transition">
+                <h6 className="text-sm font-semibold text-gray-800">
+                  {userData?.followersCount}
+                </h6>
+                <h2 className="text-xs text-gray-700">Followers</h2>
+              </div>
+            </div>
+          )}
 
           <div className="flex  items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-x-6">
             {Token !== null ? (
               <>
-                <Notfcation />
-                <button
-                  type="button"
-                  className="flex cursor-pointer text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
-                  id="user-menu-button"
-                  aria-expanded="false"
-                  data-dropdown-toggle="user-dropdown"
-                  data-dropdown-placement="bottom"
-                >
-                  <span className="sr-only">Open user menu</span>
-                  <img
-                    className="w-8 h-8 rounded-full"
-                    src={userData?.photo}
-                    alt="user photo"
-                  />
-                </button>
+                <div className="flex gap-4">
+                  <Notfcation />
+                  <button
+                    type="button"
+                    className="flex cursor-pointer text-sm bg-neutral-primary rounded-full md:me-0 focus:ring-4 focus:ring-neutral-tertiary"
+                    id="user-menu-button"
+                    aria-expanded="false"
+                    data-dropdown-toggle="user-dropdown"
+                    data-dropdown-placement="bottom"
+                  >
+                    <span className="sr-only">Open user menu</span>
+                    <img
+                      className="w-8 h-8 rounded-full"
+                      src={userData?.photo}
+                      alt="user photo"
+                    />
+                  </button>
+                </div>
+
                 <div
                   className="z-50 hidden bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-44"
                   id="user-dropdown"
@@ -121,30 +147,6 @@ export default function Navbar() {
               </>
             )}
           </div>
-
-          {/*           <div
-            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-            id="navbar-user"
-          >
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
-              <li>
-                <Link
-                  to="home"
-                  className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary duration-200 md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="profile"
-                  className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent duration-200 md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
-                >
-                  Profile
-                </Link>
-              </li>
-            </ul>
-          </div> */}
         </div>
       </nav>
     </>
