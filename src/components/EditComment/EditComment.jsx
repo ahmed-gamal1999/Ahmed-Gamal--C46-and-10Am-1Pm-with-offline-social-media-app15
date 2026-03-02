@@ -1,4 +1,3 @@
-// EditComment.jsx
 import React, { useState } from "react";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -25,7 +24,6 @@ export default function EditComment({ commentId, postId, token, onUpdated }) {
       toast.success("Comment updated");
       setIsEditing(false);
 
-      // Call callback to update the comment in parent state
       if (onUpdated) onUpdated(data.data.comment);
     } catch (error) {
       toast.error("Failed to update comment");

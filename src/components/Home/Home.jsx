@@ -22,9 +22,6 @@ export default function Home() {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
-  // =========================
-  // Get All Posts
-  // =========================
   async function getAllPosts() {
     return await axios.get("https://route-posts.routemisr.com/posts", {
       headers: {
@@ -49,9 +46,6 @@ export default function Home() {
   });
   // console.log(posts);
 
-  // =========================
-  // Delete Post
-  // =========================
   const deleteMutation = useMutation({
     mutationFn: (postId) =>
       axios.delete(`https://route-posts.routemisr.com/posts/${postId}`, {
@@ -77,16 +71,9 @@ export default function Home() {
     );
   }
 
-  // =========================
-  // Error
-  // =========================
   if (isError) {
     return <h3>{error.message}</h3>;
   }
-
-  // =========================
-  // UI
-  // =========================
 
   return (
     <>
