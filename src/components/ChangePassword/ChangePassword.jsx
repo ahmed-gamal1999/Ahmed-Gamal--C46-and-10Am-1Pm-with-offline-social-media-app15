@@ -20,14 +20,19 @@ export default function ChangePassword() {
       const { data } = await axios.patch(
         "https://route-posts.routemisr.com/users/change-password",
         values,
-        { headers: { token: Token } },
+        {
+          headers: {
+            Authorization: `Bearer ${Token}`,
+          },
+        },
       );
       if (data.success == true) {
-        console.log(data);
+        // console.log(data);
         toast.success("password Changed");
-        setToken(data.token);
-        localStorage.setItem("userToken", data.token);
-        navigate("/");
+        localStorage.removeItem("userToken");
+        localStorage.removeItem("userID");
+        navigate("/login");
+        setToken(null);
       }
     } catch (error) {
       toast.error("errrrorr");

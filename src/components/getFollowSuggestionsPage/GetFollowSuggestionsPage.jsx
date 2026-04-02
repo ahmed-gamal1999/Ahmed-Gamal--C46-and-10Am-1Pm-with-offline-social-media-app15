@@ -1,12 +1,12 @@
 import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { UserData } from "../Context/userData";
 
 export default function GetFollowSuggestionsPage() {
   const [followData, setfollowData] = useState([]);
   const { Token } = useContext(UserData);
-
   useEffect(() => {
     async function getFollow() {
       try {
@@ -15,7 +15,6 @@ export default function GetFollowSuggestionsPage() {
           { headers: { Authorization: `Bearer ${Token}` } },
         );
         if (data.success === true) {
-          // نضيف لكل user حالة isFollowing بشكل افتراضي false
           const usersWithFollowState = data.data.suggestions.map((user) => ({
             ...user,
             isFollowing: false,
@@ -23,7 +22,7 @@ export default function GetFollowSuggestionsPage() {
           setfollowData(usersWithFollowState);
         }
       } catch (error) {
-        toast.error("حدث خطأ في جلب الاقتراحات");
+        toast.error("Erorr");
       }
     }
     getFollow();
@@ -37,14 +36,13 @@ export default function GetFollowSuggestionsPage() {
         { headers: { Authorization: `Bearer ${Token}` } },
       );
 
-      // نحدث الحالة محليًا لكل user
       setfollowData((prev) =>
         prev.map((user) =>
           user._id === ID ? { ...user, isFollowing: !user.isFollowing } : user,
         ),
       );
     } catch (error) {
-      toast.error("حدث خطأ عند المتابعة");
+      toast.error("Error In Follow");
     }
   }
 

@@ -38,7 +38,9 @@ export default function ChangePhoto() {
         toast.success("Photo changed successfully");
       })
       .catch((err) => toast.error("Error uploading photo"));
-    navigate("/");
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
   }
 
   return (

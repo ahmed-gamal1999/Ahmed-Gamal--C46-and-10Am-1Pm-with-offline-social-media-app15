@@ -23,7 +23,7 @@ export default function Editdata() {
           // console.log(data.data.user);
         }
       } catch (error) {
-        console.log(error);
+        // console.log(error);
       }
     }
 

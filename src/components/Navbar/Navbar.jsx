@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
-import style from "./Navbar.module.css";
-import { Link, useNavigate } from "react-router-dom";
-import pepoleImage from "../../../src/assets/DSC_9323.jpg";
-import { UserData } from "../Context/userData.jsx";
-import logo from "../../../src/assets/logo.png";
-import toast from "react-hot-toast";
 import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../../../src/assets/logo.png";
+import { UserData } from "../Context/userData.jsx";
 import Notfcation from "../Notfcation/Notfcation.jsx";
 
 export default function Navbar() {
@@ -23,21 +21,22 @@ export default function Navbar() {
             },
           },
         );
-        // console.log(data);
 
-        if (data.success == true) {
-          // console.log(data.data.user);
+        if (data.success) {
           setuserData(data?.data?.user);
         }
       } catch (error) {
-        toast.error("erooooooooooooooooooorrrrrrr Navbar");
+        toast.error("Error in Navbar");
       }
     }
+
     if (Token) getUserData();
   }, [userData]);
+
   function signOut() {
     localStorage.removeItem("userToken");
-    setToken(null);
+    localStorage.removeItem("userID");
+
     navigate("login");
   }
   return (

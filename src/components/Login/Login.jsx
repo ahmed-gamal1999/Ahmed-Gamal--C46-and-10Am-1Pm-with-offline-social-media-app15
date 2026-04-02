@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react";
-import style from "./Login.module.css";
-import { useForm } from "react-hook-form";
-import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { data, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { UserData } from "../Context/userData";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import z from "zod";
+import { UserData } from "../Context/userData";
 
 export default function Login() {
   let { Token, setToken } = useContext(UserData);
@@ -32,29 +31,6 @@ export default function Login() {
   });
   let { register, handleSubmit, formState } = form;
 
-  /*   let { onChange, onBlur, name, ref } = register();*/
-
-  /*  async function loginFunc(values) {
-    setisLoading(true);
-    await axios
-      .post(`https://route-posts.routemisr.com/users/signin`, values)
-      .then((res) => {
-        if (data.success == true) {
-          console.log(data);
-
-          // localStorage.setItem("userToken", res.data.token);
-          // navgate("/");
-          // setToken(res.data.token);
-          // setisLoading(false);
-          // // toast.success("Login Successfuly");
-        }
-      })
-      .catch((err) => {
-        setisLoading(false);
-        toast.error("Login Failed!");
-      });
-  } */
-
   async function loginFunc(values) {
     try {
       setisLoading(true);
@@ -65,7 +41,7 @@ export default function Login() {
       if (data.success == true) {
         localStorage.setItem("userToken", data.data.token);
         localStorage.setItem("userID", data.data.user._id);
-        console.log(data.data.user._id);
+        // console.log(data.data.user._id);
 
         setToken(data.data.token);
         setisLoading(false);
@@ -97,7 +73,8 @@ export default function Login() {
             {...register("email")}
             id="floating_email"
             className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
-            placeholder=" "
+            placeholder=""
+            autoComplete="email"
           />
           <label
             htmlFor="floating_email"
@@ -118,14 +95,15 @@ export default function Login() {
             {...register("password")}
             id="floating_password"
             className="block py-2.5 px-0 w-full text-sm text-heading bg-transparent border-0 border-b-2 border-default-medium appearance-none focus:outline-none focus:ring-0 focus:border-brand peer"
-            placeholder=" "
+            placeholder=""
+            autoComplete="current-password"
           />
           <label
             htmlFor="floating_password"
             className="absolute text-sm text-body duration-300 transform -translate-y-6 scale-75 top-3 -z-10 peer-focus:start-0 peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
           >
             Enter Your password
-          </label>{" "}
+          </label>
           {formState.errors.password ? (
             <p className="text-red-600">{formState.errors.password.message}</p>
           ) : null}

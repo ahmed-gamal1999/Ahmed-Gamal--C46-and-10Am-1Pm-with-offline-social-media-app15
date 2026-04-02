@@ -1,18 +1,15 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { IoInformationCircleSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
-import toast from "react-hot-toast";
-import { AiOutlineLike } from "react-icons/ai";
-import { FaRegEdit } from "react-icons/fa";
 import { FaRegComment } from "react-icons/fa6";
 import { PiShareFat } from "react-icons/pi";
 import { UserData } from "../Context/userData";
 import CreatePost from "../CreatePost/CreatePost";
-import PostSkeleton from "../Skelaton/Skelaton";
 import DeleteButton from "../DeletePost/DeletePost";
+import PostSkeleton from "../Skelaton/Skelaton";
 import EditButton from "./../EditPost/EditButton";
 import LikeButton from "./../LikePost/LikePost";
 import GetFollowSuggestionsPage from "./../getFollowSuggestionsPage/GetFollowSuggestionsPage";

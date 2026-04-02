@@ -13,7 +13,7 @@ export default function Register() {
   const [isLoading, setisLoading] = useState(false);
   let schema = z
     .object({
-      name: z.string().min(3, "!at Leaast 1 Char").max(9, "max chars is 9"),
+      name: z.string().min(3, "!at Leaast 1 Char").max(15, "max chars is 15"),
       email: z.email("Invalid Email"),
       password: z
         .string()

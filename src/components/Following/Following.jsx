@@ -19,7 +19,7 @@ export default function Following() {
           },
         );
         if (data.success == true) {
-          console.log(data?.data?.user?.following);
+          // console.log(data?.data?.user?.following);
           setfollowing(data?.data?.user?.following);
         }
       } catch (error) {
@@ -42,10 +42,11 @@ export default function Following() {
         },
       );
       if (data.success == true) {
-        console.log(data);
+        console.log(ID);
+        toast.success("The follow was successfully cancelled.");
       }
     } catch (error) {
-      toast.error("Unfollow Not proceed ");
+      toast.error("Unfollow Not proceed");
     }
   }
   return (
