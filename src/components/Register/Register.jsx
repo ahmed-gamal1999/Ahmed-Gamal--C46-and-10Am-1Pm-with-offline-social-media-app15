@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import style from "./Register.module.css";
-import { useForm } from "react-hook-form";
-import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { data, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import z from "zod";
 
 export default function Register() {
   const [ErrMsg, setErrMsg] = useState(null);
@@ -64,6 +63,7 @@ export default function Register() {
         `https://route-posts.routemisr.com/users/signup`,
         values,
       );
+      console.log(data);
       if (data.success == true) {
         toast.success("Registration Successfuly");
         navgate("/login");
@@ -73,7 +73,6 @@ export default function Register() {
     } catch (error) {
       setErrMsg("error");
       setisLoading(false);
-      toast.error("Registration invalid");
     }
   }
   return (
@@ -201,14 +200,14 @@ export default function Register() {
         {/* Gender */}
         <div className="flex gap-8">
           {/* Male Input  */}
-          <div className="flex items-center mb-4">
+          <div className="flex items-center mb-4  ">
             <input
               id="male-option"
               type="radio"
               name="gender"
               {...register("gender")}
               value="male"
-              className="w-4 h-4 text-neutral-primary border-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none"
+              className="w-4 h-4 cursor-pointer text-neutral-primary border-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none"
             />
             <label
               htmlFor="male-option"
@@ -226,7 +225,7 @@ export default function Register() {
               name="gender"
               {...register("gender")}
               value="female"
-              className="w-4 h-4 text-neutral-primary border-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none"
+              className="w-4 cursor-pointer h-4 text-neutral-primary border-medium bg-neutral-secondary-medium rounded-full checked:border-brand focus:ring-2 focus:outline-none focus:ring-brand-subtle border border-default appearance-none"
             />
             <label
               htmlFor="female-option"
