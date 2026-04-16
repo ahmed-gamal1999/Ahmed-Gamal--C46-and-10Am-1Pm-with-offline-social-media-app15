@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { data, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserData } from "../Context/userData";
 
 export default function ChangePassword() {

@@ -1,9 +1,9 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { UserData } from "../Context/userData";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { UserData } from "../Context/userData";
 
 export default function CreatePost() {
   const { Token } = useContext(UserData);

@@ -1,8 +1,7 @@
-import React from "react";
-import { MdDelete } from "react-icons/md";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { MdDelete } from "react-icons/md";
 
 export default function DeleteComment({ commentId, postId, token, onDeleted }) {
   const queryClient = useQueryClient();

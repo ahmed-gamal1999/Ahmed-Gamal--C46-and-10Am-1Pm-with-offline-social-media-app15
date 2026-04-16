@@ -1,8 +1,8 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { UserData } from "../Context/userData";
-import { data, useNavigate } from "react-router-dom";
 
 export default function ChangePhoto() {
   const navigate = useNavigate();
