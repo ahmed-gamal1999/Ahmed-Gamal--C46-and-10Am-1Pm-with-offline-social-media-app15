@@ -63,6 +63,7 @@ export default function Register() {
         `https://route-posts.routemisr.com/users/signup`,
         values,
       );
+
       console.log(data);
       if (data.success == true) {
         toast.success("Registration Successfuly");
