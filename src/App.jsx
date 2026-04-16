@@ -16,7 +16,7 @@ import Postdetails from "../src/components/postdetails/Postdetails";
 import UpdatePostPage from "./components/UpdatePostPage/UpdatePostPage";
 import ChangePhoto from "./components/ChangePhoto/ChangePhoto";
 import Following from "./components/Following/Following";
-import UserProfile from "./components/userProfile/userProfile";
+import UserProfile from "./components/UserProfile/UserProfile";
 
 let query = new QueryClient();
 
